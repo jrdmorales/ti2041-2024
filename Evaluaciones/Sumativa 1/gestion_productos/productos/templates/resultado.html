@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Producto Registrado</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Producto Registrado Exitosamente</h1>
+    <p>Código: {{ producto.codigo }}</p>
+    <p>Nombre: {{ producto.nombre }}</p>
+    <p>Marca: {{ producto.marca }}</p>
+    <p>Fecha de Vencimiento: {{ producto.fecha_vencimiento }}</p>
+    <a href="{% url 'inicio' %}">Volver a la página principal</a>
+</body>
+</html>

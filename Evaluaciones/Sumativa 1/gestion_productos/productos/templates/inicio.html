@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Página Principal</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Bienvenido a Gestión de Productos S.A.</h1>
+    <p>Selecciona una opción:</p>
+    <ul>
+        <li><a href="{% url 'registro_producto' %}">Registrar un nuevo producto</a></li>
+        <li><a href="{% url 'consulta_productos' %}">Consultar productos registrados</a></li>
+    </ul>
+</body>
+</html>

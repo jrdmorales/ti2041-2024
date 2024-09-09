@@ -13,7 +13,7 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 ## Requisitos Previos
 
 - Python 3.12.0 
-- Django 3.2 
+- Django 5.1.1 
 
 ## Instrucciones para Ejecutar el Proyecto
 

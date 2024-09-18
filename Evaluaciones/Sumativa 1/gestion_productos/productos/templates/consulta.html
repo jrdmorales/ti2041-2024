@@ -3,15 +3,21 @@
 <head>
     {% load static %}
     <title>Consulta de Productos</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/consulta.css' %}">
 </head>
 <body>
-    <h1>Productos Registrados</h1>
-    <ul>
+    <div class="container">
+        <h1>Productos Registrados</h1>
         {% for producto in productos %}
             <li>{{ producto.codigo }} - {{ producto.nombre }} - {{ producto.marca }} - {{ producto.fecha_vencimiento }}</li>
         {% endfor %}
     </ul>
+    <div class="link">
+
     <a href="{% url 'inicio' %}">Volver a la página principal</a>
+    <a href="{% url 'registro_producto' %}">Registrar un Producto</a>
+
+    </div>
+    
 </body>
 </html>

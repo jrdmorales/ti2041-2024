@@ -9,7 +9,12 @@
     <div class="container">
         <h1>Productos Registrados</h1>
         {% for producto in productos %}
-            <li>{{ producto.codigo }} - {{ producto.nombre }} - {{ producto.marca }} - {{ producto.fecha_vencimiento }}</li>
+            <li>{{ producto.codigo }} - 
+            {{ producto.nombre }} - 
+            {{ producto.marca }} - 
+            {{ producto.categoria }} - 
+            {{ producto.precio }}
+            </li>
         {% endfor %}
     </ul>
     <div class="link">

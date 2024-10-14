@@ -18,11 +18,16 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 ## Instrucciones para Ejecutar el Proyecto
 
 1. Clona el repositorio:
-   git clone https://github.com/jrdmorales/ti2041-2024.git
-2. cd evaluaciones/sumativa2/gestion_productos
+
+       git clone https://github.com/jrdmorales/ti2041-2024.git
+
+2. Por comando cambia de directorio
+
+       cd evaluaciones/sumativa2/gestion_productos
+   
 3. Ejecuta la aplicación con 
                
-      python manage.py runserver.
+         python manage.py runserver.
 
 ## Uso
 - Visita `http://127.0.0.1:8000/` para navergar entre los templates

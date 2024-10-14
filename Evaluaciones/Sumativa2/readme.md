@@ -19,13 +19,16 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 
 1. Clona el repositorio:
    git clone https://github.com/jrdmorales/ti2041-2024.git
-2. cd evaluaciones/sumativa1/gestion_productos
-3. Ejecuta la aplicación con `python manage.py runserver`.
+2. cd evaluaciones/sumativa2/gestion_productos
+3. Ejecuta la aplicación con 
+               
+      python manage.py runserver.
 
 ## Uso
 - Visita `http://127.0.0.1:8000/` para navergar entre los templates
 - Visita `http://127.0.0.1:8000/registro/` para registrar un producto.
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.
+- Visita `http://127.0.0.1:8000/admin` para ingresar como administrador 
 
 
 

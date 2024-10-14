@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ProductoForm
+from .models import Producto
 
 # Vista para la página de inicio
 def inicio(request):
@@ -35,4 +36,17 @@ def resultado_producto(request):
 def consulta_productos(request):
     return render(request, 'consulta.html', {'productos': productos_registrados})
 
-
+# Vistas para agregar y listar productos
+def agregar_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_productos')
+    else:
+        form = ProductoForm()
+    return render(request, 'registro', {'form': form})
+# Vistas para agregar y listar productos
+def listar_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'resultado', {'productos': productos})

@@ -24,13 +24,17 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 2. Por comando cambia de directorio
 
        cd evaluaciones/sumativa2/gestion_productos
+
+3. Aplicar las migraciones de las tablas
+       
+       python manage.py migrate
    
-3. Ejecuta la aplicación con 
+4. Ejecuta la aplicación con 
                
-         python manage.py runserver.
+         python manage.py runserver
 
 ## Uso
-- Visita `http://127.0.0.1:8000/` para navergar entre los templates
+- Visita `http://127.0.0.1:8000/productos/` para navergar entre los templates
 - Visita `http://127.0.0.1:8000/registro/` para registrar un producto.
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.
 - Visita `http://127.0.0.1:8000/admin` para ingresar como administrador 

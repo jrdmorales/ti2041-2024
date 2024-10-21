@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ProductoForm
-from .models import Producto
+from .models import Producto, Marca, Categoria, Caracteristica
 
 # Vista para la página de inicio
 def inicio(request):
@@ -46,7 +46,37 @@ def agregar_producto(request):
     else:
         form = ProductoForm()
     return render(request, 'registro', {'form': form})
-# Vistas para agregar y listar productos
+
+# Vista para listar productos
 def listar_productos(request):
-    productos = Producto.objects.all()
-    return render(request, 'resultado', {'productos': productos})
+    return render(request, 'listar.html', {'productos': productos_registrados})
+
+
+def filtrar_productos(request):
+    # Inicializar productos con todos los productos registrados
+    productos = productos_registrados
+
+    # Obtener los valores de marca, categoría y característica desde el formulario de filtrado
+    marca = request.GET.get('marca')
+    categoria = request.GET.get('categoria')
+    caracteristica = request.GET.get('caracteristica')
+
+    # Aplicar los filtros si existen
+    if marca:
+        productos = [producto for producto in productos if producto['marca'].id == int(marca)]
+    if categoria:
+        productos = [producto for producto in productos if producto['categoria'].id == int(categoria)]
+    if caracteristica:
+        productos = [producto for producto in productos if caracteristica in producto['caracteristicas']]
+
+    # Obtener todas las marcas, categorías y características para el formulario de filtro
+    marcas = Marca.objects.all()
+    categorias = Categoria.objects.all()
+    caracteristicas = Caracteristica.objects.all()
+
+    return render(request, 'filtrar.html', {
+        'productos': productos,
+        'marcas': marcas,
+        'categorias': categorias,
+        'caracteristicas': caracteristicas
+    })

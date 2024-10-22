@@ -37,7 +37,9 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 - Visita `http://127.0.0.1:8000/productos/` para navergar entre los templates
 - Visita `http://127.0.0.1:8000/registro/` para registrar un producto.
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.
-- Visita `http://127.0.0.1:8000/admin` para ingresar como administrador 
+- Visita `http://127.0.0.1:8000/admin` para ingresar como administrador
+- Visita `http://127.0.0.1:8000/filtrar` para filtrar dentro de los registros
+- Visita `http://127.0.0.1:8000/listar` para listar los productor registrados
 
 
 

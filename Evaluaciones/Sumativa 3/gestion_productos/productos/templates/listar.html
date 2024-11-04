@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Consulta de Productos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/consulta.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Productos</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.codigo }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>{{ producto.categoria }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    </ul>
+    <div class="link">
+
+    <a href="{% url 'inicio' %}">Volver a la página principal</a>
+    <a href="{% url 'registro_producto' %}">Registrar un Producto</a>
+
+    </div>
+    
+</body>
+</html>

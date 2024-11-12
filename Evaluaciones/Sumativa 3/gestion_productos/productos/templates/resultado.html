@@ -6,7 +6,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/resultado.css' %}">
 </head>
 <body>
+
     <div class="container">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">Cerrar Sesión</button>
+        </form>
         <h1>Producto Registrado Exitosamente</h1>
         <p>Código: {{ producto.codigo }}</p>
         <p>Nombre: {{ producto.nombre }}</p>

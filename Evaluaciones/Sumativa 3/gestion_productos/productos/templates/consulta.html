@@ -6,7 +6,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/consulta.css' %}">
 </head>
 <body>
+    
     <div class="container">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">Cerrar Sesión</button>
+        </form>
         <h1>Productos Registrados</h1>
         {% for producto in productos %}
             <li>{{ producto.codigo }} - 
@@ -21,7 +26,6 @@
 
     <div class="link">
     <a href="{% url 'inicio' %}">Volver a la página principal</a>
-    <a href="{% url 'registro_producto' %}">Registrar un Producto</a>
 
     </div>
     

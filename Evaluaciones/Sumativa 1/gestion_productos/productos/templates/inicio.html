@@ -6,6 +6,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/inicio.css' %}">
 </head>
 <body>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-logout">Cerrar Sesión</button>
+    </form>
     <div class="container">
         <h1>Bienvenido a Gestión de Productos S.A.</h1>
         <p>Selecciona una opción:</p>

@@ -36,8 +36,6 @@ li {
 }
 .container {
     text-align: center;
-    max-width: 600px; 
-    margin: 0 auto;
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 10px; 
@@ -58,4 +56,14 @@ a {
 
 a:hover {
     background-color: #0056b3; 
+}
+.btn-logout {
+    background-color: #f44336; /* Color de fondo */
+    color: white;              /* Color del texto */
+    padding: 10px 20px;        /* Relleno */
+    border: none;              /* Sin borde */
+    cursor: pointer;           /* Cambia el cursor al pasar el mouse */
+}
+.btn-logout:hover {
+    background-color: #d32f2f; /* Color al pasar el mouse */
 }

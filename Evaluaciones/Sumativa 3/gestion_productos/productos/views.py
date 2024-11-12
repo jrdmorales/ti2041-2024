@@ -1,18 +1,27 @@
 
 from .forms import ProductoForm
 from .models import Producto, Marca, Categoria, Caracteristica
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Lista para almacenar productos temporalmente en memoria
 productos_registrados = []
+
+# Comprobar si el usuario es administrador
+def es_administrador(user):
+    return user.is_staff
 
 # Vista para Login
 def login_view(request):
     # Evitar redirección al login si el usuario ya está autenticado
     if request.user.is_authenticated:
-        return redirect('inicio')  # Cambia 'inicio' por la página principal de tu aplicación
+        return render(request, 'consulta.html', {'productos': productos_registrados})
+    
+    if request.user.is_staff:
+        return redirect(reverse_lazy('inicio'))  # Cambia 'inicio' por la página principal de tu aplicación
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,13 +33,22 @@ def login_view(request):
         else:
             return render(request, 'login.html', {'error_message': 'Credenciales incorrectas.'})
     return render(request, 'login.html')
-# Vista para la página de inicio
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+# Vista para la página de inicio (solo para administradores)
 @login_required
+@user_passes_test(es_administrador)
 def inicio(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("Acceso denegado")
     return render(request, 'inicio.html')
 
 # Vistas para el registro y consulta de productos
 @login_required
+@user_passes_test(es_administrador)
 def registro_producto(request):
     # Si se envió un formulario, procesarlo
     if request.method == 'POST':
@@ -44,8 +62,9 @@ def registro_producto(request):
 
     return render(request, 'registro.html', {'form': form})
 
-# Vista para mostrar el último producto registrado
+# Vista para mostrar el último producto registrado (solo administradores)
 @login_required
+@user_passes_test(es_administrador)
 def resultado_producto(request):
     if len(productos_registrados) == 0:
         # Si no hay productos registrados, redirigir a una página con un mensaje
@@ -59,17 +78,6 @@ def resultado_producto(request):
 def consulta_producto(request):
     return render(request, 'consulta.html', {'productos': productos_registrados})
 
-# Vistas para agregar y listar productos
-@login_required
-def agregar_producto(request):
-    if request.method == 'POST':
-        form = ProductoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_productos')
-    else:
-        form = ProductoForm()
-    return render(request, 'registro', {'form': form})
 
 # Vista para listar productos
 @login_required
@@ -79,23 +87,19 @@ def listar_producto(request):
 # Vistas para filtrar productos
 @login_required
 def filtrar_producto(request):
-    # Inicializar productos con todos los productos registrados
-    productos = productos_registrados
+    productos = Producto.objects.all()
 
-    # Obtener los valores de marca, categoría y característica desde el formulario de filtrado
     marca = request.GET.get('marca')
     categoria = request.GET.get('categoria')
     caracteristica = request.GET.get('caracteristica')
 
-    # Aplicar los filtros si existen
     if marca:
-        productos = [producto for producto in productos if producto['marca'].id == int(marca)]
+        productos = productos.filter(marca__id=marca)
     if categoria:
-        productos = [producto for producto in productos if producto['categoria'].id == int(categoria)]
+        productos = productos.filter(categoria__id=categoria)
     if caracteristica:
-        productos = [producto for producto in productos if caracteristica in producto['caracteristicas']]
+        productos = productos.filter(caracteristicas__id=caracteristica)
 
-    # Obtener todas las marcas, categorías y características para el formulario de filtro
     marcas = Marca.objects.all()
     categorias = Categoria.objects.all()
     caracteristicas = Caracteristica.objects.all()

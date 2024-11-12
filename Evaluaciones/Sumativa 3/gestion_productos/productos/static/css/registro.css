@@ -7,7 +7,16 @@ body {
     background-color: #f8f9fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.form-container .btn-logout  {
+    background-color: #f52424; 
+    color: white;         
+    padding: 10px 20px;   
+    border: none;           
+    cursor: pointer;           
+}
+.btn-logout:hover {
+    background-color: #d32f2f;
+}
 
 .form-container {
     width: 100%;
@@ -40,9 +49,9 @@ body {
 
 
 .form-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #db2424; 
+    margin-left: 110px;
+    padding: 10px 50px ; 
+    background-color: #6fc747; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -52,7 +61,7 @@ body {
 }
 
 .form-container button:hover {
-    background-color: #a13269; 
+    background-color: #5ba132; 
 }
 
 .form-container a {

@@ -25,11 +25,15 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 
        cd Evaluaciones/sumativa 3/gestion_productos
 
-3. Aplicar las migraciones de las tablas
+3. Agrega al usuario Administrador  "admin" password "inacap2024"
+
+       python manage.py createsuperuser 
+
+4. Aplicar las migraciones de las tablas
        
        python manage.py migrate
    
-4. Ejecuta la aplicación con 
+5. Ejecuta la aplicación con 
                
          python manage.py runserver
 

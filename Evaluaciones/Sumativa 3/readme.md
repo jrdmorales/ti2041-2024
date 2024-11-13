@@ -37,14 +37,30 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
                
          python manage.py runserver
 
+## Vistas 
+
+- Las vistas fueron modificadas cumpliendo estos 2 puntos 
+
+1. Haber asegurado las vistas que requieran que el usuario deba estar autenticado
+       - filtrar, listar, consulta
+2. Haber asegurado las vistas que requieran que el usuario sea administrador
+       - productos, registrar, consulta, filtrar, listar
+ 
 ## Uso
+
+
 - Visita `http://127.0.0.1:8000/` para Logearte 
-- Visita `http://127.0.0.1:8000/productos/` para navergar entre los templates
-- Visita `http://127.0.0.1:8000/registro/` para registrar un producto.
+
+- `vistas para Administrador`
+
+- Visita `http://127.0.0.1:8000/productos/` para navergar entre los templates 
+- Visita `http://127.0.0.1:8000/registrar/` para registrar un producto.
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.
 - Visita `http://127.0.0.1:8000/admin/` para ingresar como administrador
 - Visita `http://127.0.0.1:8000/filtrar/` para filtrar dentro de los registros
 - Visita `http://127.0.0.1:8000/listar/` para listar los productor registrados
 
-
-
+- `Vistas para usuario normales`
+- Visita `http://127.0.0.1:8000/filtrar/` para filtrar dentro de los registros
+- Visita `http://127.0.0.1:8000/listar/` para listar los productor registrados
+- Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.

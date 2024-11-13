@@ -49,18 +49,19 @@ Este proyecto es una aplicación web desarrollada en Django para la empresa fict
 ## Uso
 
 
-- Visita `http://127.0.0.1:8000/` para Logearte 
-
-- `vistas para Administrador`
+- Visita `http://127.0.0.1:8000/` para Logearse
+- Visita `http://127.0.0.1:8000/admin/` para ingresar como administrador
+  
+## vistas para Administrador
 
 - Visita `http://127.0.0.1:8000/productos/` para navergar entre los templates 
 - Visita `http://127.0.0.1:8000/registrar/` para registrar un producto.
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.
-- Visita `http://127.0.0.1:8000/admin/` para ingresar como administrador
 - Visita `http://127.0.0.1:8000/filtrar/` para filtrar dentro de los registros
 - Visita `http://127.0.0.1:8000/listar/` para listar los productor registrados
 
-- `Vistas para usuario normales`
+##  Vistas para usuario normales
+
 - Visita `http://127.0.0.1:8000/filtrar/` para filtrar dentro de los registros
 - Visita `http://127.0.0.1:8000/listar/` para listar los productor registrados
 - Visita `http://127.0.0.1:8000/consulta/` para ver los productos registrados.

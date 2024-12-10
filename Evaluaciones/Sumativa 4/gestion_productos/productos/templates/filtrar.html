@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Consulta de Productos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/consulta.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">Cerrar Sesión</button>
+        </form>
+        <h1>Filtrar Productos</h1>
+        <form method="GET">
+            <label for="marca">Marca:</label>
+            <select name="marca" id="marca">
+                <option value="">--Seleccione una marca--</option>
+                {% for marca in marcas %}
+                    <option value="{{ marca.id }}" {% if marca.id == request.GET.marca %}selected{% endif %}>
+                        {{ marca.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" id="categoria">
+                <option value="">--Seleccione una categoría--</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if categoria.id == request.GET.categoria %}selected{% endif %}>
+                        {{ categoria.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Filtrar</button>
+        </form>
+
+        <h2>Resultados:</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.marca }}</td>
+                        <td>{{ producto.categoria }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         <div class="link">
+        <a href="{% url 'inicio' %}">Volver a la página principal</a>
+    </div>
+    </div>
+
+   
+    
+</body>
+</html>
